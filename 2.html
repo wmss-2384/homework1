@@ -37,7 +37,7 @@
     </style>
   </head>
   <body>
-    <form action="#" enctype="multipart/form-data" method="post">
+    <form action="submit.php" enctype="multipart/form-data" method="post">
       <h4 style="color: blue">欢迎注册会员</h4>
       <div>
         <label for="phonenumber">手机号码：</label>
@@ -69,9 +69,13 @@
 
       <div>
         <label for="captcha">验证码：</label>
-        <input type="text" id="captcha" name="captcha" />
-        <img src="" alt="" id="captchaImage" name="captchaImage" />
-        <button class="button" type="reset">
+        <input type="text" id="captcha" name="captcha" required />
+        <img
+          src="captcha.php?time=<?=time()?>"
+          id="captchaImage"
+          name="captchaImage"
+        />
+        <button class="button" type="button" onclick="refreshCaptcha()">
           <img class="reset" src="arrow_03.png" alt="验证码" />
         </button>
       </div>
@@ -169,6 +173,12 @@
     </form>
 
     <script>
+      //刷新验证码
+      function refreshCaptcha() {
+        document.getElementById("captchaImage").src =
+          "captcha.php?" + Math.random();
+      }
+      //滑块值
       var msg = document.getElementById("msg"); // 根据id值找到span元素
       window.onload = function () {
         msg.innerHTML = document.getElementById("money").value; // 获取区间域初始value值
@@ -176,6 +186,16 @@
       document.getElementById("money").onchange = function () {
         msg.innerHTML = this.value;
       };
+      //图片预览
+      function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+          var preview = document.getElementById("imagePreview");
+          preview.src = reader.result;
+          preview.style.display = "block"; // 显示图片
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      }
     </script>
   </body>
 </html>
