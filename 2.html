@@ -1,11 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action=""></form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <placeholder></placeholder>
+    <style>
+      form {
+        border: 1px black;
+      }
+      div {
+        width: 300px;
+        text-align: left;
+      }
+      label {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+      }
+      span {
+        color: red;
+      }
+      .footer {
+        margin-left: -4px;
+      }
+      .tip {
+        color: red;
+        font-size: 14px;
+      }
+      .reset {
+        width: 18px;
+      }
+      .button {
+        border: none;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#" enctype="multipart/form-data" method="post">
+      <h4 style="color: blue">欢迎注册会员</h4>
+      <div>
+        <label for="phonenumber">手机号码：</label>
+        <input
+          type="text"
+          id="phonenumber"
+          name="phonenumber"
+          placeholder="11位手机号"
+        />
+        <span>必填</span>
+      </div>
+
+      <div>
+        <label for="psw">密码：</label>
+        <input type="password" id="psw" name="psw" placeholder="8位密码" />
+        <span>必填</span>
+      </div>
+
+      <div>
+        <label for="email">注册邮箱：</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          placeholder="例如wustzz@sina.com"
+        />
+        <span>必填</span>
+      </div>
+
+      <div>
+        <label for="captcha">验证码：</label>
+        <input type="text" id="captcha" name="captcha" />
+        <img src="" alt="" id="captchaImage" name="captchaImage" />
+        <button class="button" type="reset">
+          <img class="reset" src="arrow_03.png" alt="验证码" />
+        </button>
+      </div>
+
+      <div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别：
+        <label>
+          <input type="radio" name="sex" value="male" checked="checked" />男
+        </label>
+        <label> <input type="radio" name="sex" value="female" />女 </label>
+      </div>
+
+      <div>
+        <label for="birthday">生日：</label>
+        <input type="date" name="birthday" />
+      </div>
+
+      <div>
+        <label for="old">年龄：</label>
+        <input type="text" id="old" name="old" />
+      </div>
+
+      <div>
+        <label for="native">籍贯：</label>
+        <select name="native" id="native">
+          <option value="0">湖南省</option>
+          <option value="1" selected="selected">湖北省</option>
+          <option value="2">海南省</option>
+        </select>
+        <select name="city" id="city">
+          <option value="0" selected="selected">武汉</option>
+          <option value="1">黄冈</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="study">学历：</label>
+        <select name="study" id="study">
+          <option value="0" selected="selected">本科</option>
+        </select>
+      </div>
+      <div>
+        <label for="money">月薪：</label>
+        <input
+          type="range"
+          id="money"
+          name="money"
+          min="3000"
+          max="10000"
+          step="1000"
+          value="5000"
+        />
+        <span id="msg" style="color: black"></span>
+      </div>
+
+      <div>
+        <label for="hobbies">个人爱好：</label>
+        <input type="checkbox" id="hobbies" name="hobby" value="唱歌" />唱歌
+        <input type="checkbox" id="hobbies" name="hobby" value="跑步" />跑步
+        <input type="checkbox" id="hobbies" name="hobby" value="游泳" />游泳
+      </div>
+
+      <div>
+        个人照片：<input type="file" id="file" name="file" accept="image/*" />
+      </div>
+
+      <div>
+        <p>图片预览：</p>
+        <p></p>
+        <div
+          id="test-image-preview"
+          style="
+            border: 1px solid silver;
+            width: 100%;
+            height: 200px;
+            background-repeat: no-repeat;
+            background-position: center;
+          "
+        ></div>
+        <p></p>
+        <p>
+          <input type="file" id="test-image-file" name="test" />
+        </p>
+      </div>
+
+      <div>
+        简历：<br />
+        <textarea name="intro" cols="50" rows="10">请填写个人简历</textarea>
+      </div>
+
+      <div>
+        <input type="submit" value="提交" />
+        <input type="reset" value="重填" />
+      </div>
+    </form>
+
+    <script>
+      var msg = document.getElementById("msg"); // 根据id值找到span元素
+      window.onload = function () {
+        msg.innerHTML = document.getElementById("money").value; // 获取区间域初始value值
+      };
+      document.getElementById("money").onchange = function () {
+        msg.innerHTML = this.value;
+      };
+    </script>
+  </body>
 </html>
