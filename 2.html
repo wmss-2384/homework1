@@ -37,7 +37,7 @@
     </style>
   </head>
   <body>
-    <form action="submit.php" enctype="multipart/form-data" method="post">
+    <form action="#"  method="post">
       <h4 style="color: blue">欢迎注册会员</h4>
       <div>
         <label for="phonenumber">手机号码：</label>
@@ -71,7 +71,7 @@
         <label for="captcha">验证码：</label>
         <input type="text" id="captcha" name="captcha" required />
         <img
-          src="captcha.php?time=<?=time()?>"
+          src=""
           id="captchaImage"
           name="captchaImage"
         />
@@ -175,7 +175,7 @@
       //刷新验证码
       function refreshCaptcha() {
         document.getElementById("captchaImage").src =
-          "captcha.php?" + Math.random();
+          "" + Math.random();
       }
       //滑块值
       var msg = document.getElementById("msg"); // 根据id值找到span元素
